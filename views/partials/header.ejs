@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <title>blog app</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="/stylesheets/app.css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+</head>
+
+<body background="https://homosapientaishwarya.files.wordpress.com/2018/12/cropped-logo-newwwww-3.jpg">
+    <div class="ui fixed inverted menu">
+        <div class="ui container">
+            <div class="header item">Homosapient</div>
+
+            <a href="/" class="item">Home</a>
+           
+            <a href="/blogs/new" class="item">New post</a>
+            <div class="right menu">
+                    <% if(!currentUser){%>
+                <a class="item" href="/login">Login</a>
+                <%}else{%>
+                <a class="item" href="#">Signed in as <%=currentUser.username%></a>
+                <a class="item" href="/logout">logout</a>
+                <%}%>
+            
+              </div>
+        </div>
+    </div>
