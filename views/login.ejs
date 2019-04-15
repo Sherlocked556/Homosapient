@@ -1,8 +1,10 @@
 <%include ./partials/header%>
-<h1>login!</h1>
-<form action="/login" method="post">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <input type="submit" value="login">
+<div class="ui main text container segment">
+    <div class="ui huge header">LOGIN</div>
+<form action="/login" method="post" class="ui form">
+    <div class="field"> <input type="text" name="username" placeholder="username"></div>
+        <div class="field">  <input type="password" name="password" placeholder="password"></div>   
+    <input type="submit" value="login" class="ui violet basic button big">
 </form>
+</div>
 <%include ./partials/footer%>

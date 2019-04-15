@@ -8,7 +8,7 @@ app           =express(),
 passport = require("passport"),
 LocalStrategy = require("passport-local"),
 passportLocalMongoose=require("passport-local-mongoose");
-mongoose.connect("mongodb://localhost/restful_blog_app");
+mongoose.connect("mongodb://u5kyxnwgwelwhqkmyqna:AMzmv6YfnwzYJ9ghKkSx@bkyobuj9jyra5z2-mongodb.services.clever-cloud.com:27017/bkyobuj9jyra5z2");
 app.set("view engine","ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
