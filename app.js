@@ -45,18 +45,7 @@ app.use(require("express-session")({
     console.log(res.locals.currentUser);
     next();
   });
-  var newUser = new User({
-    username: "Aishwarya"
-  });
-  User.register(newUser, "homosapient@123456", (err, user) => {
-    if (err) {
-        
-      console.log(err);
-      return res.render("login");
-    }
-    passport.authenticate("local");
-
-  });
+  
  app.get("/login", (req, res) => {
     res.render("login");
   });
