@@ -4,16 +4,14 @@ method =require("method-override"),
 expressSanitizer=require("express-sanitizer"),
 mongoose      =require("mongoose"),
 express       =require("express"),
-app           =express(),
-passport = require("passport"),
-LocalStrategy = require("passport-local"),
-passportLocalMongoose=require("passport-local-mongoose");
+app           =express()
 mongoose.connect("mongodb+srv://dev:dev1@cluster0-9e1vn.mongodb.net/<dbname>?retryWrites=true&w=majority");
 app.set("view engine","ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(expressSanitizer());
 app.use(method("_method"));
+
 //mongoose mondel config
 var blogSchema=new mongoose.Schema({
     title:String,
@@ -23,23 +21,13 @@ var blogSchema=new mongoose.Schema({
 
 });
 var Blog=mongoose.model("Blog", blogSchema);
-var UserSchema=new mongoose.Schema({
-   username:String,
-   password:String
-});
-// UserSchema.plugin(passportLocalMongoose);
-var User=mongoose.model("User",UserSchema);
-//Passport config
+
 app.use(require("express-session")({
     secret: "this is the session secret",
     resave: false,
     saveUninitialized: false,
   }));
-//   app.use(passport.initialize());
-//   app.use(passport.session());
-//   passport.use(new LocalStrategy(User.authenticate()));
-//   passport.serializeUser(User.serializeUser());
-//   passport.deserializeUser(User.deserializeUser());
+
   app.use((req,res,next)=>{
     res.locals.currentUser=req.session.logged;
     console.log(res.locals.currentUser,"here");
@@ -156,7 +144,7 @@ app.delete("/blogs/:id",isLoggedIn,(req,res)=>{
 });
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 8002;
+  port = 8000;
 }
 
 app.listen(port,process.env.IP,()=>{
