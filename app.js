@@ -29,7 +29,7 @@ app.use(require("express-session")({
   }));
 
   app.use((req,res,next)=>{
-    res.locals.currentUser=req.session.logged;
+    res.locals.currentUser=req.session.logged?req.session.logged:false;
     console.log(res.locals.currentUser,"here");
     next();
   });
