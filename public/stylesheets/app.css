@@ -1,29 +1,37 @@
-i.icon{
-    font-size: 2em;
+i.icon {
+  font-size: 2em;
 }
-.container.main{
-    margin-top: 7em;
+.container.main {
+  margin-top: 7em;
 }
-#delete{
-    display: inline;
+#delete {
+  display: inline;
 }
-#head{
-    font-family: 'Amatic SC', cursive;
-    text-align: center;
-    font-size: 200px;
-    font-weight: 400;
-    display: inline;
+#head {
+  font-family: "Amatic SC", cursive;
+  text-align: center;
+  font-size: 200px;
+  font-weight: 400;
+  display: inline;
 }
-body{
-background: #FFAFBD;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #ffc3a0, #FFAFBD);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #ffc3a0, #FFAFBD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+body {
+  background: #06beb6; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #48b1bf,
+    #06beb6
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #48b1bf,
+    #06beb6
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-#h1{
-    font-family: 'Architects Daughter', cursive;
+#h1 {
+  font-family: "Architects Daughter", cursive;
 }
-#hi{
-    widows: 100px;
-    height: 100px;
-    display: inline;
+#hi {
+  widows: 100px;
+  height: 100px;
+  display: inline;
 }

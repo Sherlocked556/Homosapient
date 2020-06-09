@@ -7,10 +7,11 @@
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 </head>
 
-<body background="https://homosapientaishwarya.files.wordpress.com/2018/12/cropped-logo-newwwww-3.jpg">
-    <div class="ui fixed inverted menu">
+<body >
+    <div class="ui fixed menu">
         <div class="ui container">
             <div class="header item">Homosapient</div>
 
@@ -21,7 +22,7 @@
                     <% if(!currentUser){%>
                 <a class="item" href="/login">Login</a>
                 <%}else{%>
-                <a class="item" href="#">Signed in as <%=currentUser.username%></a>
+                <a class="item" href="#">Signed in as Homosapient</a>
                 <a class="item" href="/logout">logout</a>
                 <%}%>
             

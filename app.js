@@ -8,7 +8,7 @@ app           =express(),
 passport = require("passport"),
 LocalStrategy = require("passport-local"),
 passportLocalMongoose=require("passport-local-mongoose");
-mongoose.connect("mongodb://u5kyxnwgwelwhqkmyqna:AMzmv6YfnwzYJ9ghKkSx@bkyobuj9jyra5z2-mongodb.services.clever-cloud.com:27017/bkyobuj9jyra5z2");
+mongoose.connect("mongodb+srv://dev:dev1@cluster0-9e1vn.mongodb.net/<dbname>?retryWrites=true&w=majority");
 app.set("view engine","ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
@@ -27,22 +27,22 @@ var UserSchema=new mongoose.Schema({
    username:String,
    password:String
 });
-UserSchema.plugin(passportLocalMongoose);
+// UserSchema.plugin(passportLocalMongoose);
 var User=mongoose.model("User",UserSchema);
 //Passport config
 app.use(require("express-session")({
-    secret: "achchA ji aapko sab pata hai chalo dekhte hau",
+    secret: "this is the session secret",
     resave: false,
     saveUninitialized: false,
   }));
-  app.use(passport.initialize());
-  app.use(passport.session());
-  passport.use(new LocalStrategy(User.authenticate()));
-  passport.serializeUser(User.serializeUser());
-  passport.deserializeUser(User.deserializeUser());
+//   app.use(passport.initialize());
+//   app.use(passport.session());
+//   passport.use(new LocalStrategy(User.authenticate()));
+//   passport.serializeUser(User.serializeUser());
+//   passport.deserializeUser(User.deserializeUser());
   app.use((req,res,next)=>{
-    res.locals.currentUser=req.user;
-    console.log(res.locals.currentUser);
+    res.locals.currentUser=req.session.logged;
+    console.log(res.locals.currentUser,"here");
     next();
   });
   
@@ -50,22 +50,32 @@ app.use(require("express-session")({
     res.render("login");
   });
 
-  app.post("/login", passport.authenticate("local", {
-    successRedirect: "/blogs",
-    failureRedirect: "/login"
-  }), (req, res) => {
-    //middleware waala
+  app.post("/login",  (req, res) => {
+      console.log(req)
+    if(req.body.password==='devkey123')
+    {
+        ssn=req.session
+        ssn.logged=true
+         res.status(200).json({"ssn":ssn})
+    }
+    else
+    {
+        res.status(401).json({"err":"bad key"})
+    }
+    res.end("ended")
   });
   app.get("/logout", (req,res)=>{
-    req.logout();
+    ssn=req.session
+        ssn.logged=false
     res.redirect("/blogs");
   });
 
   function isLoggedIn(req,res,next){
-    if(req.isAuthenticated()){
+    if(req.session.logged){
       return next();
     }
-    res.redirect("/login");
+    else
+    res.redirect("/");
   };
 // Restful routes
 app.get("/",(req,res)=>{
@@ -146,7 +156,7 @@ app.delete("/blogs/:id",isLoggedIn,(req,res)=>{
 });
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 8000;
+  port = 8002;
 }
 
 app.listen(port,process.env.IP,()=>{
